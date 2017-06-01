@@ -16,7 +16,18 @@ The model uses a one layer nerual network that predicts the class vector for a g
 ## The API
 This system uses the Flask web library for the API. A POST request is sent to the API with a given non-profit description. The API returns a JSON file of class names and their given confidences.
 
+## Results
+Even on only 6 items of training data, the system performed extremely accurately and quickly.
+
 ## TODO
 + Reorganize for extensibility to try other model types
 + Test Word2Vec
 + Train on actual data
+
+## Environemnt
+Python with packages
++ Tensorflow
++ Flask
++ Numpy
++ Natural Language Toolkit
+
