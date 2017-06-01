@@ -4,4 +4,19 @@ A Communicode NLP microservice that pulls skill keywords from description blocks
 **NOTE:** On account of some stupidity, I wasn't following Git style and didn't commit enough nor use separate branches. Thus, the current version of the code isn't stable. The results documented in this file were produced by a previous version. The code is being restructured for future extensibility and Git style will be followed from this point forward
 
 ## The Algorithm
-xcvxcv
+#### Preprocessing Training Data
+A given phrase is first tokenized and stemmed using the Lancaster Stemmer from the "Natural Language Toolkit" by the NLTK Project. Certain characters and phrases are removed from the phrase like "and", "we", and "?". The total ordered list of these stemmed tokens is called the "stems".
+#### Phrases to Vectors
+Currently, I am using the Bag-Of-Words (BOW) technique, though, I will be testing Word2Vec. To implement BOW, each phrase is tokenized and stemmed. A vector is created with a zero if a stem in the phrase is not in the list of stems and a one if it is. The original list of stems is ordered and the vector of zeros and ones corresponds exactly with that order. If there are tokens in the phrase that weren't in the training data, and thus not in the list of stems, they are ignored.
+### Classes to Vectors
+Each class in the training data is given an index (ie. "HTML" -> 1). The label for any given piece of data is a one-hot (though there may be more than one class).
+#### Neural Network
+The model uses a one layer nerual network that predicts the class vector for a given phrase vector. The sigmoid function is used to tranform any output to a number between zero and one. These outputs between zero and one are the confidences for each class.
+
+## The API
+This system uses the Flask web library for the API. A POST request is sent to the API with a given non-profit description. The API returns a JSON file of class names and their given confidences.
+
+## TODO
++ Reorganize for extensibility to try other model types
++ Test Word2Vec
++ Train on actual data
