@@ -11,7 +11,7 @@ from flask import jsonify
 from flask import request, make_response, abort
 
 # Import Tagify for tagging
-from tagify import tagify, getModel
+from nn import getModel
 
 # Create app
 app = Flask(__name__)
@@ -20,8 +20,8 @@ app = Flask(__name__)
 @app.route('/tagify/v1.0/tagify/<modelName>', methods = ["POST"])
 def getTags(modelName):
     if not request.json: abort(400)
-    model = getModel(modelName)
-    tags = tagify(request.json["description"], model)
+    model = getModel("C:\\Users\\abeol\\Git\\communicode-tagify\\models\\{0}".format(modelName))
+    tags = model.tag(request.json["description"])
     return jsonify(tags)
 
 @app.errorhandler(404)
