@@ -1,7 +1,13 @@
 # tagging-api
 A Communicode NLP microservice that pulls skill keywords from description blocks. 
 
-**NOTE:** On account of some stupidity, I wasn't following Git style and didn't commit enough nor use separate branches. Thus, the current version of the code isn't stable. The results documented in this file were produced by a previous version. The code is being restructured for future extensibility and Git style will be followed from this point forward
+## Usage Instructions
+#### System Requirements
+As of yet, only Windows 10 has been tested.
+Must have python 3.5.x with Flask, numpy, tensorflow, and NLTK
++ Download source in a working directory
++ Run API with `python app.py`
+
 
 ## The Algorithm
 #### Preprocessing Training Data
@@ -20,14 +26,5 @@ This system uses the Flask web library for the API. A POST request is sent to th
 Even on only 6 items of training data, the system performed extremely accurately and quickly.
 
 ## TODO
-+ Reorganize for extensibility to try other model types
 + Test Word2Vec
 + Train on actual data
-
-## Environemnt
-Python with packages
-+ Tensorflow
-+ Flask
-+ Numpy
-+ Natural Language Toolkit
-
