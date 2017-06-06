@@ -24,7 +24,6 @@ def getTags(modelName):
     if not request.json: abort(400)
     # Get directory
     dir = os.path.dirname(__file__)
-    print(dir)
     # Get desired model
     filename = dir + "/models/{0}".format(modelName)
     print(filename)
