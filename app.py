@@ -9,9 +9,10 @@ from flask import Flask
 from flask import jsonify
 # Import various Flask tools
 from flask import request, make_response, abort
-
 # Import tool for importing models
 from nn import getModel
+# Os for filepaths
+import os
 
 # Create app
 app = Flask(__name__)
@@ -21,8 +22,13 @@ app = Flask(__name__)
 def getTags(modelName):
     # Kill if JSON not given
     if not request.json: abort(400)
+    # Get directory
+    dir = os.path.dirname(__file__)
+    print(dir)
     # Get desired model
-    model = getModel("C:\\Users\\abeol\\Git\\communicode-tagify\\models\\{0}".format(modelName))
+    filename = dir + "/models/{0}".format(modelName)
+    print(filename)
+    model = getModel(filename)
     # Calculate tags and confidences
     tags = model.tag(request.json["description"])
     # Return as JSON
