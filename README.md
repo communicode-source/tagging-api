@@ -9,7 +9,7 @@ Must have python 3.5.x with Flask, numpy, tensorflow, and NLTK
 + Run API with `python app.py`
 + Send a JSON POST request to `http://127.0.0.1:5000/tagify/v1.0/tagify/<model name>`
 The JSON request must have a `description` field with a string representing the desired text to be classified.
-Models available are `dummy`, `dummyDeep`, and `dummyH20' (replace name in <model name>).
+Models available are `dummy`, `dummyDeep`, and `dummyH20` (replace name in <model name>).
 I recomend https://insomnia.rest/ as a REST API client.
 
 ## The Algorithm
