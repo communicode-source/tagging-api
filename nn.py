@@ -27,7 +27,7 @@ class NeuralNetwork (tagify.Model):
 
     def vectorize(self, phrase):
         """
-        Converts a phrase into a vector using a given bag of words
+        Converts a phrase into a vector using them model's bag of words
         :param phrase: String to be vectorized
         :return: List of 1s and 0s
         """
@@ -41,9 +41,9 @@ class NeuralNetwork (tagify.Model):
 
     def classify(self, vector):
         """
-        Converts a class vector into classes and confidence values
+        Converts a class vector into a dictionary of classes and confidence values
         :param vector: List of confidence values
-        :return: Dictionary of Class -> Confidence
+        :return: Dictionary of Class Names (Strings) -> Confidence (Floats)
         """
         return {self.classes[i]: vector[0][i] for i in range(len(vector[0]))}
 
