@@ -4,7 +4,7 @@ A Communicode NLP microservice that pulls skill keywords from description blocks
 ## Usage Instructions
 #### System Requirements
 As of yet, only Windows 10 has been tested.
-Must have python 3.5.x with Flask, numpy, tensorflow, and NLTK
+Must have python 3.5.x with Flask, numpy, scipy, tensorflow, and NLTK
 + Download source in a working directory
 + Run API from terminal with command `python app.py`
 + Send a JSON POST request to `http://127.0.0.1:5000/tagify/v1.0/tagify/<model name>`
