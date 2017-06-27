@@ -9,10 +9,21 @@ from flask import Flask
 from flask import jsonify
 # Import various Flask tools
 from flask import request, make_response, abort
-# Import tool for importing models
-from nn import getModel
 # Os for filepaths
 import os
+# Pickle for model loading
+from pickle import load
+
+def getModel(fname):
+    """
+    Gets a saved model from storage
+    :param fname: String file name
+    :return: NeuralNetwork
+    """
+    # Open a binary file to get the model from
+    with open("{0}.model".format(fname), "rb") as f:
+        model = load(f)
+    return model
 
 # Create app
 app = Flask(__name__)
@@ -26,7 +37,6 @@ def getTags(modelName):
     dir = os.path.dirname(__file__)
     # Get desired model
     filename = dir + "/models/{0}".format(modelName)
-    print(filename)
     model = getModel(filename)
     # Calculate tags and confidences
     tags = model.tag(request.json["description"])

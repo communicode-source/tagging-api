@@ -5,8 +5,9 @@
 
 import tensorflow as tf
 import tagify
-from pickle import dump, load
+from pickle import dump
 import numpy as np
+from scipy.special import expit
 
 class NeuralNetwork (tagify.Model):
     def __init__(self, stems, classes, layers, ignore = []):
@@ -62,7 +63,7 @@ class NeuralNetwork (tagify.Model):
                 return np.dot(inp, w[n]) + b[n]
             # Continue recursion
             return _calc(np.dot(inp, w[n]) + b[n], w, b, n + 1)
-        return tagify.sigmoid(_calc([vector], self.w, self.b))
+        return expit(_calc([vector], self.w, self.b))
 
     def train(self, trainX, trainY, epochs, learnRate):
         """
@@ -126,14 +127,3 @@ class NeuralNetwork (tagify.Model):
         # Open a binary file to write the model to
         with open("{0}.model".format(fname), "wb") as f:
             dump(self, f)
-
-def getModel(fname):
-    """
-    Gets a saved model from storage
-    :param fname: String file name
-    :return: NeuralNetwork
-    """
-    # Open a binary file to get the model from
-    with open("{0}.model".format(fname), "rb") as f:
-        model = load(f)
-    return model

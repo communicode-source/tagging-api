@@ -5,7 +5,7 @@
 
 # Get tagify tools and JSON
 import tagify
-from nn import NeuralNetwork, getModel
+from nn import NeuralNetwork
 
 # Tokens to ignore
 ignore = ["?", "'s", ".", "!", "I", "i", "We", "we", "need",
@@ -41,7 +41,7 @@ stems = ['about', 'ap', 'apply', 'brand', 'databas', 'design', 'email', 'in',
 
 if __name__ == "__main__":
     # If this file is run independently, train model
-    n = NeuralNetwork(stems, classes, [len(stems), 25, 100, 25, len(classes)], ignore)
+    n = NeuralNetwork(stems, classes, [len(stems), 25, 25, len(classes)], ignore)
     # Train
     # Inputs
     data = [(n.vectorize(i["phrase"]),
@@ -51,7 +51,8 @@ if __name__ == "__main__":
             [i[1] for i in data],
             10000,
             .05)
-    n.save("dummyDeep")
+    n.save("dummy2")
     """
     model = getModel("C:\\Users\\abeol\\Git\\communicode-tagify\\models\\dummy")
-    model.tag("User database") """
+    model.tag("User database")
+    """
