@@ -20,7 +20,7 @@ Currently, I am using the Bag-Of-Words (BOW) technique, though, I will be testin
 ### Classes to Vectors
 Each class in the training data is given an index (ie. "HTML" -> 1). The label for any given piece of data is a one-hot (though there may be more than one class).
 #### Neural Network
-The model uses a one layer nerual network that predicts the class vector for a given phrase vector. The sigmoid function is used to tranform any output to a number between zero and one. These outputs between zero and one are the confidences for each class.
+The model uses a nerual network of a desired size and shape that predicts the class vector for a given phrase vector. The sigmoid function is used to tranform any output to a number between zero and one. These outputs between zero and one are the confidences for each class.
 
 ## The API
 This system uses the Flask web library for the API. A POST request is sent to the API with a given non-profit description. The API returns a JSON file of class names and their given confidences.
