@@ -24,10 +24,3 @@ The model uses a nerual network of a desired size and shape that predicts the cl
 
 ## The API
 This system uses the Flask web library for the API. A POST request is sent to the API with a given non-profit description. The API returns a JSON file of class names and their given confidences.
-
-## Results
-Even on only 6 items of training data, the system performed extremely accurately and quickly.
-
-## TODO
-+ Test Word2Vec
-+ Train on actual data
